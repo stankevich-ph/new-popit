@@ -1,0 +1,65 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Новости  | PhotoRating{% endblock %}
+
+{% block head %}
+    <div class="head_index">
+        <div class="Logo">
+            <a href="{% url 'news_home' %}">
+                <div class="Logo_index_first">PHOTO</div>
+                <br>
+                <div class="Logo_index_second">RATING</div>
+            </a>
+        </div>
+
+        <div class="style_menu">
+            <a href="{% url 'news_home' %}">Главная</a>
+            <a href="{% url 'photographers' %}">Фотографы</a>
+            <a href="{% url 'rating_view' %}">Рейтинг</a>
+            <a href="">О нас</a>
+        </div>
+
+    {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button  class="dropbtn" id="dropdownBtn">
+              <div class = "User_photo_btn">
+                  <img src="{{ user.userprofile.Avatar.url }}" alt="">
+              </div>
+              <div class="btn_name_setting">
+                  {{ user.first_name }} <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </div>
+            </button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="{% url 'user_profile' %}">Настройки</a>
+                <a href="{% url 'logout' %}">Выход</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="login_head">
+            <a href="{% url 'login' %}">Войти/Регистрация</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+{% block content %}
+{% for el in model %}
+    <div class="user_information_box">
+        <img src="{{ el.Avatar.url }}" class="user_information_photo">
+        <div class="user_information_text">
+            <div class="user_information_name">{{ el.user.first_name }} {{ el.user.last_name }}</div>
+            <div class="user_information_date">{{ el.Date_of_birth }}</div>
+        </div>
+    </div>
+    {% endfor %}
+{#{% for el in polls %}#}
+{#        <img src="{{ el.Avatar.url }}" class="user_photo_setting"> <br>#}
+{#        {{ el.Patronymic }}<br>#}
+{#        {{ el.Date_of_birth }}<br>#}
+{#        {{ el.username }}<br>#}
+{#        {{ el.last_name }}#}
+{##}
+{##}
+{#{% endfor %}#}
+
+{% endblock %}

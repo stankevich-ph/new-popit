@@ -1,0 +1,122 @@
+
+.user_container_setting {
+    display: flex;
+    width: 80%;
+    padding-top: 20px;
+    margin: auto;
+}
+.user_container {
+    /*display: flex;*/
+    background-color: #f5f5f5;
+    border: 1px solid;
+    border-color: #eeeeee;
+    border-radius: 10px;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+    margin: 1%;
+}
+.container_for_name_and_input {
+    padding: 1%;
+    display: flex;
+    margin: auto;
+    float: left;
+    width: 100%;
+}
+
+.input_position {
+    display: flex;
+    width: 60%;
+    float: right;
+}
+.user_tag {
+    color: rgb(129, 133, 152);
+    display: flex;
+    width: 30%;
+}
+.user_tag p{
+    padding-right: 10%;
+    width: 100%;
+    text-align: right;
+    margin: auto;
+}
+.user-form-control {
+    background-color: #e9ecef;
+    display: flex;
+    padding: 0.375rem 0.75rem;
+    color: #212529;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    width: 100%;
+}
+.user_setting {
+    float: right;
+    width: 100%;
+}
+.user_setting h5 p{
+    float: left;
+}
+.button_container {
+    display: flex;
+    flex-direction: initial;
+    width: 50%;
+    margin: auto;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+.edit_btn {
+    color: white;
+    border: solid 2px #2c5984;
+    border-radius: 5px;
+    background-color: #2c5984;
+    padding: 2px;
+    width: 150px;
+    margin: auto;
+}
+.edit_btn:hover {
+    border: 2px solid transparent;
+    box-shadow: 0 0 8px rgba(44, 89, 132, 0.55);
+
+}
+.delete_btn {
+    color: white;
+    border: solid 2px #bd1313;
+    border-radius: 5px;
+    background-color: #bd1313;
+    padding: 2px;
+    width: 150px;
+    margin: auto;
+}
+.delete_btn:hover {
+    border: 2px solid transparent;
+    box-shadow: 0 0 8px rgba(189, 19, 19, 0.55);
+}
+.user_photo_setting {
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: #eeeeee;
+    width: 30%;
+    margin: 1%;
+}
+.user_photo_setting img{
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+
+    border-radius: 5%;
+}
+.edit_btn_img {
+    color: white;
+    border: solid 2px #2c5984;
+    border-radius: 5px;
+    background-color: #2c5984;
+    padding: 2px;
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

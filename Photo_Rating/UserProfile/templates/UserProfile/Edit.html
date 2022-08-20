@@ -1,0 +1,141 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Настройки  | PhotoRating{% endblock %}
+
+{% block head %}
+<div class="head_index">
+    <div class="Logo">
+        <a href="">
+            <div class="Logo_index_first">PHOTO</div>
+            <br>
+            <div class="Logo_index_second">RATING</div>
+        </a>
+    </div>
+
+    <div class="style_menu">
+        <a href="{% url 'news_home' %}">Главная</a>
+        <a href="">Фотографы</a>
+        <a href="">Рейтинг</a>
+        <a href="">О нас</a>
+    </div>
+
+    {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button  class="dropbtn" id="dropdownBtn">
+              <div class = "User_photo_btn">
+                  <img src="{{ user.userprofile.Avatar.url }}" alt="">
+              </div>
+              <div class="btn_name_setting">
+                  {{ user.first_name }} <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </div>
+            </button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="{% url 'user_profile' %}">Настройки</a>
+            <a href="{% url 'logout' %}">Выход</a>
+        </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
+{% block content %}
+{#<form method = "POST">#}
+{#    {% csrf_token %}#}
+{##}
+{#            <input class="test_input" type="text" name="username" value="{{ model.username }}"> <br>#}
+{#            <input class="test_input" type="text" name="first_name" value="{{ model.first_name }}"> <br>#}
+{#            <input class="test_input" type="text" name="last_name" value="{{ model.last_name }}"> <br>#}
+{#            <input class="test_input" type="text" name="Patronymic" value="{{ model.Patronymic }}"> <br>#}
+{#            <input class="test_input" type="date" name="Date_of_birth" value="{{ model.Date_of_birth }}"> <br>#}
+{#            <input class="test_input" type="image" name="Avatar" value="{{ model.Avatar }}"> <br>#}
+{#            <input class="test_input" type="email" name="email" value="{{ model.email }}"> <br>#}
+{#            <button type="submit">Отправить</button>#}
+{#</form>#}
+
+{% if user.is_authenticated %}
+<form method = "POST">
+    {% csrf_token %}
+        <div class="user_container_setting">
+            <div class="user_photo_setting">
+                <img src="{{ user.userprofile.Avatar.url }}">
+                <input class="test_input" type="file" accept="image/*" name="Avatar" value="{{ model.Avatar }}">
+            </div>
+            <div class="user_container">
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Имя пользователя:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" name="username" class="user-form-control" value="{{ user.username }}">
+                    </div>
+                </div>
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Имя:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" name="first_name" class="user-form-control" value="{{ user.first_name }}">
+                    </div>
+                </div>
+
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Фамилия:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" name="last_name" class="user-form-control" value="{{ user.last_name }}">
+                    </div>
+                </div>
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Отчество:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" name="Patronymic" class="user-form-control" value="{{ user.userprofile.Patronymic }}">
+                    </div>
+                </div>
+
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Дата рождения:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="date" name="Date_of_birth" class="user-form-control" value="{{ user.userprofile.Date_of_birth }}">
+                    </div>
+                </div>
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Почтовый адрес:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="email" name="email" class="user-form-control" value="{{ user.email }}">
+                    </div>
+                </div>
+                <div class="button_container">
+
+                    <button class="edit_btn" type = "submit">Редактировать</button>
+                    <button class="delete_btn">Удалить</button>
+                </div>
+            </div>
+        </div>
+{% endif %}
+</form>
+
+
+
+
+    </div>
+
+{#    <div class="user_container_setting">#}
+{#        <div class="user_photo_setting">#}
+{#            <img src="" alt="">#}
+{#        </div>#}
+{#        <div class="user_settings">#}
+{#            {{ user.first_name }}#}
+{#        </div>#}
+{#    </div>#}
+{% endblock content %}
+<body>
+
+</body>
+</html>

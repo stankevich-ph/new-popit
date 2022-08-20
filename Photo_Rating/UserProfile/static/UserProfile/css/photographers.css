@@ -1,0 +1,25 @@
+.user_information_box {
+    display: flex;
+    width: 80%;
+    margin: 1% auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0% 1% 0% 1%;
+    background-color: #f5f5f5;
+    border-color: #eeeeee;
+}
+.user_information_photo {
+    width: 20%;
+    border-radius: 100%;
+    margin: 1% 0% 1% 0%;
+}
+.user_information_text{
+    display: flex;
+    flex-direction: column;
+}
+.user_information_name {
+    display: contents;
+    font-size: 20px;
+    padding: 0.5% 0% 0% 1%;
+    color: #2c5984;
+}

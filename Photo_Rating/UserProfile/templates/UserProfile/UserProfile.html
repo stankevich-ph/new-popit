@@ -1,0 +1,117 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Настройки | PhotoRating{% endblock %}
+
+{% block head %}
+<div class="head_index">
+    <div class="Logo">
+        <a href="{% url 'news_home' %}">
+            <div class="Logo_index_first">PHOTO</div>
+            <br>
+            <div class="Logo_index_second">RATING</div>
+        </a>
+    </div>
+
+    <div class="style_menu">
+            <a href="{% url 'news_home' %}">Главная</a>
+            <a href="{% url 'photographers' %}">Фотографы</a>
+            <a href="{% url 'rating_view' %}">Рейтинг</a>
+            <a href="">О нас</a>
+    </div>
+
+    {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button  class="dropbtn" id="dropdownBtn">
+              <div class = "User_photo_btn">
+                  <img src="{{ user.userprofile.Avatar.url }}" alt="">
+              </div>
+              <div class="btn_name_setting">
+                  {{ user.first_name }} <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </div>
+            </button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="{% url 'user_profile' %}">Настройки</a>
+            <a href="{% url 'logout' %}">Выход</a>
+        </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="user_container_setting">
+            <div class="user_photo_setting">
+                <img src="{{ user.userprofile.Avatar.url }}" alt="">
+{#                <div class="">#}
+{#                    <button class="edit_btn_img">Изменить фото</button>#}
+{#                </div>#}
+            </div>
+            <div class="user_container">
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Имя:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" class="user-form-control" placeholder="{{ user.first_name }}" disabled>
+                    </div>
+                </div>
+
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Фамилия:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" class="user-form-control" placeholder="{{ user.last_name }}" disabled>
+                    </div>
+                </div>
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Отчество:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" class="user-form-control" placeholder="{{ user.userprofile.Patronymic }}" disabled>
+                    </div>
+                </div>
+
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Дата рождения:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" class="user-form-control" placeholder="{{ user.userprofile.Date_of_birth }}" disabled>
+                    </div>
+                </div>
+
+                <div class="container_for_name_and_input">
+                    <div class="user_tag">
+                        <p>Имя пользователя:</p>
+                    </div>
+                    <div class="input_position">
+                        <input type="text" class="user-form-control" placeholder="{{ user }}" disabled>
+                    </div>
+                </div>
+
+                <div class="button_container">
+                    <a href="{% url 'userupdate' user.id %}">
+                        <button class="edit_btn">Редактировать</button>
+                    </a>
+                        <button class="delete_btn">Удалить</button>
+                </div>
+            </div>
+        </div>
+{% endif %}
+
+
+
+    </div>
+
+{#    <div class="user_container_setting">#}
+{#        <div class="user_photo_setting">#}
+{#            <img src="" alt="">#}
+{#        </div>#}
+{#        <div class="user_settings">#}
+{#            {{ user.first_name }}#}
+{#        </div>#}
+{#    </div>#}
+{% endblock content %}

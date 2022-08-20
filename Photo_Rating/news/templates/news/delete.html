@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Удаление записи | PhotoRating{% endblock %}
+
+{% block head %}
+    <div class="head_index">
+        <div class="Logo">
+            <a href="{% url 'news_home' %}">
+                <div class="Logo_index_first">PHOTO</div>
+                <br>
+                <div class="Logo_index_second">RATING</div>
+            </a>
+        </div>
+
+        <div class="style_menu">
+            <a href="{% url 'news_home' %}">Главная</a>
+            <a href="{% url 'photographers' %}">Фотографы</a>
+            <a href="{% url 'rating_view' %}">Рейтинг</a>
+            <a href="">О нас</a>
+        </div>
+
+
+    <div class="dropdown">
+        <button  class="dropbtn" id="dropdownBtn">
+          <div class = "User_photo_btn">
+              <img src="{{ user.userprofile.Avatar.url }}" alt="">
+          </div>
+          <div class="btn_name_setting">
+              {{ user.first_name }} <i class="fa fa-sort-desc" aria-hidden="true"></i>
+          </div>
+        </button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="{% url 'user_profile' %}">Настройки</a>
+        <a href="{% url 'logout' %}">Выход</a>
+    </div>
+
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="form_position">
+    <h3>Удаление записи</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Удалить статью</button>
+        </form>
+</div>
+{% endblock %}
