@@ -87,8 +87,15 @@
                     <img src="{{ el.image_url }}" class="setting_img">
                 {% endif %}
                     <div class="like_and_comment">
-                        <div class="like"><i class="fa fa-heart" aria-hidden="true">{{ el.like }}</i></div>
-                        <button id="CommentsButtonIs" class="comment" onclick="opencomment('open_comments')"><i class="fa fa-comments" aria-hidden="true"></i></button>
+                        <button class="like_btn" data-news_id="{{ el.id }}">
+                            <i class="fa fa-heart" aria-hidden="true">
+                                <span id="news-{{ el.id }}_likes_count">{{ el.likes_count }}</span>
+                            </i>
+                        </button>
+
+                        <button id="CommentsButtonIs" class="comment" onclick="opencomment('open_comments')">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                        </button>
                     </div>
             <form method="post">
                     {% csrf_token %}

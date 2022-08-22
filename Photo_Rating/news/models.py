@@ -1,13 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Articles (models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default = None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     title = models.CharField('Название', max_length=80)
     anons = models.CharField('Анонс', max_length=250)
     full_text = models.TextField('Статья')
-    data = models.DateTimeField ('Дата публикации')
-    like = models.IntegerField ('Колличество лайков', default=0)
+    data = models.DateTimeField('Дата публикации')
     comments = models.CharField('Комментарий', max_length=150, null=True, blank=True)
     image = models.ImageField(blank=True, upload_to='img/')
     image_url = models.ImageField(blank=True)
@@ -22,3 +22,8 @@ class Articles (models.Model):
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
 
+
+class Like(models.Model):
+    article = models.ForeignKey(Articles, verbose_name="Новость", related_name="likes", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name="Пользователь", null=True, on_delete=models.SET_NULL)
+    date_create = models.DateTimeField("Дата создания", auto_now_add=True, blank=True)

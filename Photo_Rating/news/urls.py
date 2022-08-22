@@ -1,6 +1,5 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
+
 from . import views
 
 
@@ -10,4 +9,5 @@ urlpatterns = [
     path('create', views.create, name='create'),
     path('<int:pk>/update', views.NewsUpdateView.as_view(), name='news-update'),
     path('<int:id>/delete', views.NewsDeleteView, name='news-delete'),
+    path('<int:news_id>/like_action/', views.LikeAction.as_view(), name='like_action'),
 ]
